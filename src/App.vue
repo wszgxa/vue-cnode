@@ -1,10 +1,25 @@
+<!-- 全局样式 -->
+<style lang="styl" src='./assets/styl/main.styl'></style>
 <template>
   <div id="app">
+    <cn-header :menu-state.sync="menuState"></cn-header>
+    <sidebar :menu-state.sync="menuState"></sidebar>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-export default {
-}
+  import cnHeader from './components/common/header'
+  import sidebar from './components/common/sidebar'
+  export default {
+    data () {
+      return {
+        menuState: false
+      }
+    },
+    components: {
+      cnHeader,
+      sidebar
+    }
+  }
 </script>

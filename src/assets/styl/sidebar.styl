@@ -1,0 +1,28 @@
+@import './partial/variables'
+@import 'mixin'
+
+.menu
+  position fixed
+  z-index 2
+  top 0
+  left 0
+  right 0
+  bottom 0
+  background-color rgba(0, 0, 0, 0.2)
+.menu-wrap
+  position fixed
+  top 0
+  left 0
+  bottom 0
+  width 7.6rem
+  z-index 3
+  background-color s-color-bg
+.show-transition 
+  transition: transform side-time ease-in-out;
+.show-enter, .show-leave 
+  transform translate3d(-7rem, 0, 0)
+
+.color-transition 
+  transition: background-color side-time ease-in-out;
+.color-enter, .color-leave 
+  background-color rgba(0, 0, 0, 0)

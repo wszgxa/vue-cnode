@@ -16,4 +16,3 @@ Vue.http.options.emulateJSON = true
 Vue.http.interceptors.push(resourceGlobalSet) // ajax 拦截
 
 router.start(App, 'app')
-
