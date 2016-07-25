@@ -3,17 +3,16 @@
   <section class="detail">
     <div class="content">
       <h3 class="title">{{ data.title }}</h3>
-      
       <div class="info-wrap">
         <div class="user_avatar">
-          <img :src="data.author.avatar_url" alt="user_icon">
+          <img :src="author.avatar_url" alt="user_icon">
         </div>
         <div class="item-detail">
           <div class="z">
             <span>
               <i v-if="tag.state" class="ac" >{{ tag.msg }}</i>
               <i v-else>{{ tag.msg }}</i>
-              {{ data.author.loginname }}</span>
+              {{ author.loginname }}</span>
             <span>创建于<timeago :since="data.create_at"></timeago> ● {{ data.visit_count }}次浏览</span>
           </div>
           <div class="g">
@@ -53,6 +52,7 @@
     data () {
       return {
         data: {},
+        author: {},
         tag: {
           state: true,
           msg: '置顶'
@@ -70,6 +70,7 @@
         let data = JSON.parse(res.data)
         if (data.success) {
           this.data = data.data
+          this.author = data.data.author
         } else {
           // todo 错误处理
           window.alert('接口调用出错')
