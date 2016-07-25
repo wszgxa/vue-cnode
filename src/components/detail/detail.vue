@@ -23,8 +23,24 @@
       </div>
         <text :text="data.content"></text>
     </div>
-    <div class="comments">
-      
+    <div v-for="(index, item) in data.replies" class="comments">
+      <div class="info-wrap s">
+        <div class="user_avatar">
+          <img :src="item.author.avatar_url" alt="user_icon">
+        </div>
+        <div class="item-detail">
+          <div class="z">
+            <span>{{ item.author.loginname }}</span>
+            <span>{{ index }}楼 ● <timeago :since="item.create_at"></timeago></span>
+          </div>
+          <div class="g">
+            <i class="icon i-praise ii"></i>
+            {{item.ups.length}}
+            <i class="icon i-reply ii"></i>
+          </div>
+        </div>
+      </div>
+      <text :text="item.content"></text>
     </div>
   </section>
 </template>
@@ -58,7 +74,6 @@
           // todo 错误处理
           window.alert('接口调用出错')
         }
-        console.log(res.data)
       }, function (err) {
         console.log(err)
       })

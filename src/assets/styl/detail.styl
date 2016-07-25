@@ -8,6 +8,8 @@ ig-w = 1.2rem
     .title
       padding pd 
       font-size size-title
+  .info-wrap.s
+    border none
   .info-wrap
     border-bottom 1px solid color-border
     font-size sp-size
@@ -25,11 +27,10 @@ ig-w = 1.2rem
     display inline-flex
     width (ct-width - ig-w - 2 * pd)rem
     justify-content space-between
-    .z, .g
+    .z
       display flex
       flex-direction column
       justify-content space-around
-    .z
       padding-left (20/75)rem
       i
         display inline-block
@@ -40,9 +41,18 @@ ig-w = 1.2rem
       .ac 
         background-color #6DD45D
     .g
+      display flex
+      align-items center
       padding-right (20/75)rem
       text-align right
       i
         font-size (40/75)rem
-      
+        display inline-block
+      .ii
+        color #878787
+        font-size (30/75)rem
+        padding 0 10px
+  .comments
+    @extend $block
+    
   

@@ -15,7 +15,7 @@
   blockquote
     border-left 0.3em solid color-border
     p
-      padding-left 0.8em
+      padding-left 0.1rem
   ul
     padding-left 1.5em
     li
@@ -45,7 +45,7 @@
     td
       background-color color-background-shallow
   p
-    margin 1em 0
+    margin 0.1rem 0
     text-align justify
   img
     display block
