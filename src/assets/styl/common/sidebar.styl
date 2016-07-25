@@ -1,5 +1,5 @@
-@import './partial/variables'
-@import 'mixin'
+@import '../partial/variables'
+@import '../mixin'
 
 .menu
   position fixed
@@ -19,11 +19,11 @@
   box-shadow (8/75)rem 0 (20/75)rem color-hover
   background-color s-color-bg
 .show-transition 
-  transition: transform side-time ease-in-out;
+  transition: transform side-time ease-in-out
 .show-enter, .show-leave 
   transform translate3d(-7rem, 0, 0)
 
 .color-transition 
-  transition: background-color side-time ease-in-out;
+  transition: background-color side-time ease-in-out
 .color-enter, .color-leave 
   background-color rgba(0, 0, 0, 0)

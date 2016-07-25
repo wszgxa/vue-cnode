@@ -10,7 +10,10 @@
         </div>
         <div class="item-detail">
           <div class="z">
-            <span><i>{{ tag.msg }}</i>{{ data.author.loginname }}</span>
+            <span>
+              <i v-if="tag.state" class="ac" >{{ tag.msg }}</i>
+              <i v-else>{{ tag.msg }}</i>
+              {{ data.author.loginname }}</span>
             <span>创建于<timeago :since="data.create_at"></timeago> ● {{ data.visit_count }}次浏览</span>
           </div>
           <div class="g">

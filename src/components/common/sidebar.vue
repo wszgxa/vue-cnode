@@ -1,4 +1,4 @@
-<style lang="styl" src='../../assets/styl/sidebar.styl' scoped></style>
+<style lang="styl" src='../../assets/styl/common/sidebar.styl' scoped></style>
 <template>
   <aside class="menu" v-show="menuState" transition="color" @click="closeMenu($event)">
   </aside>

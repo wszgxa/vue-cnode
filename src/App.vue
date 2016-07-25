@@ -1,5 +1,7 @@
 <!-- 全局样式 -->
 <style lang="styl" src='./assets/styl/main.styl'></style>
+<style lang="styl">
+</style>
 <template>
   <div id="app">
     <cn-header :menu-state.sync="menuState"></cn-header>
