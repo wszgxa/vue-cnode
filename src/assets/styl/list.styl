@@ -1,1 +1,45 @@
 @import './partial/variables'
+
+item-w = 9.8rem
+pd-side = (20/75)rem
+ig-w = 1rem
+.item
+  width item-w
+  margin (10/75)rem auto
+  box-shadow 0 (5/75)rem (20/75rem) color-hover
+  a
+    color color-font
+  h3
+    padding (10/75)rem pd-side 0
+    display inline-block
+    font-size (30/75)rem
+    text-overflow ellipsis
+    max-width (item-w - 2 * pd-side)rem
+    overflow hidden
+    white-space nowrap
+  .info-wrap
+    display flex
+    padding (10/75)rem pd-side
+  .user_avatar
+    display inline-block
+    width ig-w
+    height ig-w
+    img
+      border-radius 50%
+      width ig-w
+      height ig-w
+  .item-detail
+    display inline-flex
+    width (item-w - ig-w - 2 * pd-side)
+    justify-content space-between
+    .i, .g
+      display flex
+      flex-direction column
+    .i
+      padding-left (20/75)rem
+    .g
+      padding-right (20/75)rem
+      text-align right
+            
+
+    

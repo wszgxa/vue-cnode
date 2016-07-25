@@ -1,6 +1,7 @@
-<style lang='styl' scoped>
-  list-wrap
+<style lang="styl" scoped>
+  .list-wrap
     width 10rem
+    margin-top (100/75)rem
 </style>
 <template>
   <section class="list-wrap">
@@ -26,11 +27,10 @@
       }).then(function (res) {
         let data = JSON.parse(res.data)
         if (!data.success) {
-          alert('失败')
+          window.alert('失败')
         } else {
-          listData = data.data
+          this.listData = data.data
         }
-        console.log(data.data.length)
       }, function (err) {
         console.log(err)
       })
