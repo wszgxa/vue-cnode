@@ -1,7 +1,7 @@
 <style lang='styl' src='../../../assets/styl/list.styl' scoped></style>
 <template>
   <div v-for='item in listData' class="item">
-    <a v-link="{name: 'detail', params:{ id: item.id }}">
+    <a v-link="{name: 'detail', query:{ id: item.id }}">
       <h3>{{ item.title }}</h3>
       <div class="info-wrap">
         <div class="user_avatar">

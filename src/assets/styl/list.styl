@@ -1,20 +1,19 @@
 @import './partial/variables'
 
-item-w = 9.8rem
 pd-side = (20/75)rem
 ig-w = 1rem
 .item
-  width item-w
-  margin (10/75)rem auto
-  box-shadow 0 (5/75)rem (20/75rem) color-hover
+  width ct-width
+  margin item-mg
+  box-shadow item-shadow
   a
     color color-font
   h3
     padding (10/75)rem pd-side 0
     display inline-block
-    font-size (30/75)rem
+    font-size size-title
     text-overflow ellipsis
-    max-width (item-w - 2 * pd-side)rem
+    max-width (ct-width - 2 * pd-side)rem
     overflow hidden
     white-space nowrap
   .info-wrap
@@ -30,7 +29,7 @@ ig-w = 1rem
       height ig-w
   .item-detail
     display inline-flex
-    width (item-w - ig-w - 2 * pd-side)
+    width (ct-width - ig-w - 2 * pd-side)
     justify-content space-between
     .i, .g
       display flex

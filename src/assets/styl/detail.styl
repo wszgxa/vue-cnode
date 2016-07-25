@@ -1,0 +1,49 @@
+@import 'partial/variables'
+ig-w = 1.2rem
+
+$block
+  width ct-width
+  margin item-mg
+  box-shadow item-shadow
+.detail
+  margin-top mg-top
+  .content
+    @extend $block
+    .title
+      padding pd 
+      font-size size-title
+  .info-wrap
+    font-size sp-size
+    display flex
+    padding pd
+  .user_avatar
+    display inline-block
+    width ig-w
+    height ig-w
+    img
+      border-radius 50%
+      width ig-w
+      height ig-w
+  .item-detail
+    display inline-flex
+    width (ct-width - ig-w - 2 * pd)rem
+    justify-content space-between
+    .z, .g
+      display flex
+      flex-direction column
+      justify-content space-around
+    .z
+      padding-left (20/75)rem
+      i
+        display inline-block
+        padding 0 5px
+        margin-right 5px
+        background-color #CACACA
+        border-radius 5px
+    .g
+      padding-right (20/75)rem
+      text-align right
+      i
+        font-size (40/75)rem
+      
+  
