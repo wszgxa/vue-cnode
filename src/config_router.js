@@ -3,7 +3,7 @@ export function configRouter (router) {
     '/': {
       name: 'index',
       title: '全部',
-      component: (resolve) => require(['./components/main/main.vue'], resolve)
+      component: (resolve) => require(['./components/main/index.vue'], resolve)
     }
   })
 }
