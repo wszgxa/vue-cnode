@@ -3,12 +3,6 @@
   <aside class="menu" v-show="menuState" transition="color" @click="closeMenu($event)">
   </aside>
   <div v-show="menuState" transition="show" class="menu-wrap">
-    <div>
-      
-    </div>
-    <nav>
-      
-    </nav>
   </div>
 </template>
 
