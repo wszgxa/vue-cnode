@@ -7,13 +7,16 @@
   <section class="list-wrap">
     <list :list-data='listData'></list>
   </section> 
+  <tip :tip="tip"></tip>
 </template>
 <script>
   import list from './child/list'
+  import tip from '../common/tip'
   export default {
     data () {
       return {
-        listData: []
+        listData: [],
+        tip: {}
       }
     },
     ready () {
@@ -27,16 +30,22 @@
       }).then(function (res) {
         let data = JSON.parse(res.data)
         if (!data.success) {
-          window.alert('失败')
+          this.tip = {
+            text: '接口出错'
+          }
         } else {
           this.listData = data.data
         }
       }, function (err) {
+        this.tip = {
+          text: '调用接口出错'
+        }
         console.log(err)
       })
     },
     components: {
-      list
+      list,
+      tip
     }
   }
 </script>
