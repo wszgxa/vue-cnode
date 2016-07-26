@@ -13,7 +13,9 @@
 <script>
   import cnHeader from './components/common/header'
   import sidebar from './components/common/sidebar'
+  import store from './vuex/store'
   export default {
+    store,
     data () {
       return {
         menuState: false
