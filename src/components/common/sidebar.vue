@@ -17,23 +17,23 @@
     </div>
     <nav>
       <div :class="navState">
-        <a id='index' @click="handleUrl($event)">
+        <a id='index' @click="handleUrl('index')">
           <i class="icon i-all"></i>
           <span>全部</span>
         </a>
-        <a id="good" @click='handleUrl($event)'>
+        <a id="good" @click="handleUrl('good')">
           <i class="icon i-good"></i>
           <span>精华</span>
         </a>
-        <a id="share" @click='handleUrl($event)'>
+        <a id="share" @click="handleUrl('share')">
           <i class="icon i-share"></i>
           <span>分享</span>
         </a>
-        <a id="ask" @click='handleUrl($event)'>
+        <a id="ask" @click="handleUrl('ask')">
           <i class="icon i-ask"></i>
           <span>问答</span>
         </a>
-        <a id="job" @click='handleUrl($event)'>
+        <a id="job" @click="handleUrl('job')">
           <i class="icon i-job"></i>
           <span>招聘</span>
         </a>
@@ -71,11 +71,12 @@
       menuState: Boolean
     },
     methods: {
-      handleUrl (e) {
-        let name = e.target.id
+      handleUrl (name) {
+        console.log(name)
         this.$route.router.go({
           name: name
         })
+        // 防止出现按钮失效
         this.closeMenu()
       },
       setNavState () {
