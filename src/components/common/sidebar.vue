@@ -6,10 +6,12 @@
     <div class="header">
       <div class="h-item">
         <div class="user-img">
-          <img :src="userImg" alt="头像">
+          <a @click="handleUrl('login')">
+            <img :src="userImg" alt="头像">
+          </a>
         </div>
       </div>
-      <div class="h-item">
+      <div class="h-item s">
         <div class="login-text">
           请点击头像登陆
         </div>
@@ -76,7 +78,6 @@
         this.$route.router.go({
           name: name
         })
-        // 防止出现按钮失效
         this.closeMenu()
       },
       setNavState () {
