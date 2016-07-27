@@ -25,6 +25,11 @@ export function configRouter (router) {
       title: '招聘',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
     },
+    '/login': {
+      name: 'login',
+      title: '登陆',
+      component: (resolve) => require(['./components/login/login.vue'], resolve)
+    },
     '/detail': {
       name: 'detail',
       title: '话题',
