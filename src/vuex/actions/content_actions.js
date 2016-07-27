@@ -15,7 +15,7 @@ export const setContent = ({ dispatch, state }, tag) => {
     if (data.success) {
       dispatch(types.SET_CONTENT, tag, data.data)
     } else {
-      return '接口调用出错'
+      return data.error_msg
     }
   }, function (err) {
     console.log(err)
