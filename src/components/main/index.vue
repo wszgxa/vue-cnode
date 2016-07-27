@@ -16,10 +16,15 @@
   export default {
     vuex: {
       getters: {
-        listData: ({ content }) => content.index
+        data: ({ content }) => content.data
       },
       actions: {
         setContent
+      }
+    },
+    computed: {
+      listData: function () {
+        return this.data[this.$route.name]
       }
     },
     data () {
@@ -28,7 +33,7 @@
       }
     },
     ready () {
-      let res = this.setContent('index')
+      let res = this.setContent(this.$route.name)
       if (res) {
         this.tip = {
           text: res

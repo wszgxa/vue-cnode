@@ -7,7 +7,8 @@ export const setContent = ({ dispatch, state }, tag) => {
     method: 'GET',
     params: {
       page: 0,
-      limit: 20
+      limit: 20,
+      tab: tag === 'index' ? '' : tag
     }
   }).then(function (res) {
     let data = JSON.parse(res.data)

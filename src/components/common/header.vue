@@ -1,4 +1,4 @@
-<style lang='styl' src='../../assets/styl/common/header.styl' socped></style>
+<style lang='styl' src='../../assets/styl/common/header.styl' scoped></style>
 
 <template>
   <header class="header">

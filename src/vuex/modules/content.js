@@ -5,12 +5,18 @@ import {
 } from '../mutation_types'
 const state = {
   // 保存第一页数据
-  index: []
+  data: {
+    index: [],
+    good: [],
+    share: [],
+    ask: [],
+    job: []
+  }
 }
 
 const mutations = {
   [SET_CONTENT] (state, tag, data) {
-    state[tag] = data
+    state.data[tag] = data
   },
   [ADD_CONTENT] (state, tag, data) {
     state[tag] = state[tag].concat(data)
