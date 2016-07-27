@@ -3,7 +3,7 @@
 <template>
   <header 
     v-if="name == 'login'"
-    class="header">
+    class="header s">
     <div class="header-wrap">
       <a @click='goBack' class="icon i-back"></a>
       <h3>{{ $route.title }}</h3>
