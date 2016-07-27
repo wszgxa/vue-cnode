@@ -18,7 +18,8 @@
     "vue-resource": "^0.9.3",
     "vue-router": "^0.7.13",
     "vue-timeago": "^2.1.1",
-    "vuex": "^1.0.0-rc.2"
+    "vuex": "^1.0.0-rc.2",
+    "vuex-router-sync": "^2.0.2"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",
