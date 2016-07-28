@@ -17,13 +17,24 @@
       </div>
     </div>
   </section>
-  <dialog></dialog>
+  <dialog :config.sync="config"></dialog>
 </template>
 <script>
   import dialog from '../common/dialog'
   export default {
+    data () {
+      return {
+        config: {
+          visible: false,
+          text: '在 Cnode社区网站端登陆你的账户，然后在右上角找到【设置】按钮，点击进入后将页面滑动到最底部来查看你的Access Token。',
+          sureText: '确定'
+        }
+      }
+    },
     methods: {
-      tip () {}
+      tip () {
+        this.config.visible = true
+      }
     },
     components: {
       dialog

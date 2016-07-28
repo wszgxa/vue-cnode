@@ -1,17 +1,38 @@
 <style lang="styl" src='../../assets/styl/common/dialog.styl' scoped></style>
 <template>
-  <div class="dialog-mask"></div>
-  <div class="dialog">
+  <div v-if="config.visible" class="dialog-mask"></div>
+  <div v-if="config.visible" class="dialog">
     <div class="text">
-      在 Cnode社区网站端登陆你的账户，然后在右上角找到【设置】按钮，点击进入后将页面滑动到最底部来查看你的Access Token。
+      {{ config.text }}
     </div>
     <div class="btn-wrap">
-      <a>确定</a>
-      <a>取消</a>
+      <a @click="sure" >{{config.sureText}}</a>
+      <a @click="close" v-if="config.cancelText != undefined ">取消</a>
     </div>
   </div>
 </template>
 <script>
   export default {
+    props: {
+      config: {
+        type: Object,
+        default: {
+          visible: false,
+          text: '',
+          sureText: '确定',
+          cancelText: '',
+          callback: null
+        }
+      }
+    },
+    methods: {
+      sure () {
+        if (this.config.callback) this.config.callbak()
+        this.close()
+      },
+      close () {
+        this.config.visible = false
+      }
+    }
   }
 </script>
