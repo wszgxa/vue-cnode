@@ -74,7 +74,6 @@
     },
     methods: {
       handleUrl (name) {
-        console.log(name)
         this.$route.router.go({
           name: name
         })

@@ -13,12 +13,20 @@
         <a>登陆</a>
       </div>
       <div class="tip">
-        <a>如何获取Access_Token?</a>
+        <a @click="tip">如何获取Access_Token?</a>
       </div>
     </div>
   </section>
+  <dialog></dialog>
 </template>
 <script>
+  import dialog from '../common/dialog'
   export default {
+    methods: {
+      tip () {}
+    },
+    components: {
+      dialog
+    }
   }
 </script>
