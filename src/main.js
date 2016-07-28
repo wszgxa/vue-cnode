@@ -20,7 +20,7 @@ Vue.use(vueTimeAgo, {
   }
 })
 const router = new VueRouter({
-  history: false,
+  history: true,
   saveScrollPosition: true
 })
 configRouter(router)

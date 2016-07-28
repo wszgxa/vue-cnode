@@ -1,7 +1,7 @@
 import * as types from '../mutation_types'
 import Vue from 'vue'
 export const setContent = ({ dispatch, state }, tag) => {
-  if (state[tag]) return false
+  if (state.content[tag]) return false
   Vue.http({
     url: '/api/v1/topics',
     method: 'GET',

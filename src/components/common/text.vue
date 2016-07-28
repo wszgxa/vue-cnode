@@ -1,6 +1,6 @@
 <style lang='styl' src='../../assets/styl/common/text.styl' scoped></style>
 <style lang='styl'>
-  @import '../../assets/styl/partial/variables'
+@import '../../assets/styl/partial/variables'
 .markdown-text
   font-size size-text
   h1, h2, h3, h4
