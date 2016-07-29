@@ -25,12 +25,25 @@
         name: ({route}) => route.name
       }
     },
+    data () {
+      return {
+        headerState: false
+      }
+    },
     props: {
       menuState: Boolean
     },
+    ready () {
+      let stateEnum = {
+        login: true
+      }
+      if (stateEnum[this.$route.name]) {
+        this.headerState = true
+      }
+    },
     methods: {
       goBack () {
-        this.$route.router.go({name: 'index'})
+        window.history.go(-1)
       },
       openMenu () {
         this.menuState = true

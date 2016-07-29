@@ -45,7 +45,7 @@
     td
       background-color color-background-shallow
   p
-    margin 0.1rem 0
+    margin 0.3rem 0
     text-align justify
   img
     display block
