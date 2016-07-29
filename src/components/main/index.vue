@@ -33,34 +33,12 @@
       }
     },
     ready () {
-      let res = this.setContent(this.$route.name)
-      if (res) {
+      // 用箭头函数绑定this
+      this.setContent(this.$route.name, (err) => {
         this.tip = {
-          text: res
+          text: err
         }
-      }
-      // this.$http({
-      //   url: '/api/v1/topics',
-      //   method: 'GET',
-      //   params: {
-      //     page: 0,
-      //     limit: 20
-      //   }
-      // }).then(function (res) {
-      //   let data = JSON.parse(res.data)
-      //   if (!data.success) {
-      //     this.tip = {
-      //       text: '调用接口出错'
-      //     }
-      //   } else {
-      //     this.listData = data.data
-      //   }
-      // }, function (err) {
-      //   this.tip = {
-      //     text: '调用接口出错'
-      //   }
-      //   console.log(err)
-      // })
+      })
     },
     components: {
       list,
