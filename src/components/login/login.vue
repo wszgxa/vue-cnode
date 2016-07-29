@@ -23,7 +23,13 @@
 <script>
   import tip from '../common/tip'
   import dialog from '../common/dialog'
+  import { setBaseInfo } from '../../vuex/actions/user_actions'
   export default {
+    vuex: {
+      actions: {
+        setBaseInfo
+      }
+    },
     data () {
       return {
         config: {
@@ -45,6 +51,7 @@
             text: '请输入正确的Access Token'
           }
         }
+        this.setBaseInfo(this.access)
       }
     },
     components: {
