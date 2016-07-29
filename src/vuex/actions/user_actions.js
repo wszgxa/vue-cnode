@@ -1,10 +1,17 @@
 import * as types from '../mutation_types'
+import { setMsg } from '../../tool'
 import Vue from 'vue'
-
+let localStorage = window.localStorage
 let storeBaseInfo = function (data) {
-  window.localStorage.setItem('cnodeBaseInfo', JSON.stringify(data))
+  localStorage.setItem('cnodeBaseInfo', JSON.stringify(data))
 }
-export const setBaseInfo = ({ dispatch, state }, token) => {
+export const getStore = ({dispatch, state}) => {
+  if (localStorage.getItem('cnodeBaseInfo')) {
+    let data = JSON.parse(localStorage.getItem('cnodeBaseInfo'))
+    dispatch(types.SET_BASEINFO, data)
+  }
+}
+export const setBaseInfo = ({ dispatch, state }, token, callback) => {
   Vue.http({
     url: '/api/v1/accesstoken',
     method: 'POST',
@@ -21,11 +28,14 @@ export const setBaseInfo = ({ dispatch, state }, token) => {
       delete data.success
       storeBaseInfo(data)
       dispatch(types.SET_BASEINFO, data)
+      callback(setMsg(true, '登录成功'))
     } else {
       console.log(data.error_msg)
+      callback(setMsg(false, data.error_msg))
     }
   }).catch(err => {
     let errBody = JSON.parse(err.body)
     console.log(errBody.error_msg)
+    callback(setMsg(false, errBody.error_msg))
   })
 }

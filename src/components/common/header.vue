@@ -19,19 +19,20 @@
   </header>
 </template>
 <script>
+  import { setMenu } from '../../vuex/actions/doc_actions'
   export default {
     vuex: {
       getters: {
         name: ({route}) => route.name
+      },
+      actions: {
+        setMenu
       }
     },
     data () {
       return {
         headerState: false
       }
-    },
-    props: {
-      menuState: Boolean
     },
     ready () {
       let stateEnum = {
@@ -46,7 +47,7 @@
         window.history.go(-1)
       },
       openMenu () {
-        this.menuState = true
+        this.setMenu(true)
       }
     }
   }

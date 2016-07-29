@@ -1,6 +1,6 @@
 <style lang="styl" src='../../assets/styl/common/sidebar.styl' scoped></style>
 <template>
-  <aside class="menu" v-show="menuState" transition="color" @click="closeMenu($event)">
+  <aside class="menu" v-show="menuState" transition="color" @click="setMenu(false)">
   </aside>
   <div v-show="menuState" transition="show" class="menu-wrap">
     <div class="header">
@@ -51,10 +51,15 @@
 </template>
 
 <script>
+  import { setMenu } from '../../vuex/actions/doc_actions'
   export default {
     vuex: {
       getters: {
-        name: ({ route }) => route.name
+        name: ({ route }) => route.name,
+        menuState: ({ docState }) => docState.menuState
+      },
+      actions: {
+        setMenu
       }
     },
     data () {
@@ -69,21 +74,15 @@
     watch: {
       name: 'setNavState'
     },
-    props: {
-      menuState: Boolean
-    },
     methods: {
       handleUrl (name) {
         this.$route.router.go({
           name: name
         })
-        this.closeMenu()
+        this.setMenu(false)
       },
       setNavState () {
         this.navState = 'nav-wrap ' + this.name
-      },
-      closeMenu (e) {
-        this.menuState = false
       }
     }
   }

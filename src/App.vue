@@ -4,8 +4,8 @@
 </style>
 <template>
   <div id="app">
-    <cn-header :menu-state.sync="menuState"></cn-header>
-    <sidebar :menu-state.sync="menuState"></sidebar>
+    <cn-header></cn-header>
+    <sidebar></sidebar>
     <router-view></router-view>
   </div>
 </template>
@@ -16,11 +16,6 @@
   import store from './vuex/store'
   export default {
     store,
-    data () {
-      return {
-        menuState: false
-      }
-    },
     components: {
       cnHeader,
       sidebar

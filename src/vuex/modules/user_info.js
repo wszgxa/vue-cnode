@@ -12,7 +12,7 @@ const state = {
 
 const mutations = {
   // 设置 token 登录名 头像
-  [SET_BASEINFO] (state, token, data) {
+  [SET_BASEINFO] (state, data) {
     try {
       state.id = data.id
       state.accessToken = data.accesstoken

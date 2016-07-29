@@ -24,10 +24,12 @@
   import tip from '../common/tip'
   import dialog from '../common/dialog'
   import { setBaseInfo } from '../../vuex/actions/user_actions'
+  import { setMenu } from '../../vuex/actions/doc_actions'
   export default {
     vuex: {
       actions: {
-        setBaseInfo
+        setBaseInfo,
+        setMenu
       }
     },
     data () {
@@ -45,13 +47,25 @@
       dialog () {
         this.config.visible = true
       },
+      success () {
+        window.history.go(-1)
+        this.setMenu(true)
+      },
       login () {
         if (this.access.length < 6) {
           this.tip = {
             text: '请输入正确的Access Token'
           }
+          return
         }
-        this.setBaseInfo(this.access)
+        this.setBaseInfo(this.access, (res) => {
+          if (res.success) {
+            this.success()
+          }
+          this.tip = {
+            text: res.msg
+          }
+        })
       }
     },
     components: {
