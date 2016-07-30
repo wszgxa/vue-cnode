@@ -1,4 +1,5 @@
 import * as types from '../mutation_types'
+import { setMsg } from '../../tool'
 import Vue from 'vue'
 export const setContent = ({ dispatch, state }, tag, callback) => {
   if (state.content[tag]) return false
@@ -15,10 +16,10 @@ export const setContent = ({ dispatch, state }, tag, callback) => {
     if (data.success) {
       dispatch(types.SET_CONTENT, tag, data.data)
     } else {
-      callback(data.error_msg)
+      callback(setMsg(false, data.error_msg))
     }
   }).catch(err => {
     console.log(err)
-    callback('接口调用出错')
+    callback(setMsg(false, '接口调用出错'))
   })
 }

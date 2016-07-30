@@ -18,18 +18,17 @@
     </div>
   </section>
   <dialog :config.sync="config"></dialog>
-  <tip :tip.sync="tip"></tip>
 </template>
 <script>
-  import tip from '../common/tip'
   import dialog from '../common/dialog'
   import { setBaseInfo } from '../../vuex/actions/user_actions'
-  import { setMenu } from '../../vuex/actions/doc_actions'
+  import { setMenu, setTip } from '../../vuex/actions/doc_actions'
   export default {
     vuex: {
       actions: {
         setBaseInfo,
-        setMenu
+        setMenu,
+        setTip
       }
     },
     data () {
@@ -39,7 +38,6 @@
           text: '在 Cnode社区网站端登陆你的账户，然后在右上角找到【设置】按钮，点击进入后将页面滑动到最底部来查看你的Access Token。',
           sureText: '确定'
         },
-        tip: {},
         access: ''
       }
     },
@@ -53,24 +51,23 @@
       },
       login () {
         if (this.access.length < 6) {
-          this.tip = {
+          this.setTip({
             text: '请输入正确的Access Token'
-          }
+          })
           return
         }
         this.setBaseInfo(this.access, (res) => {
           if (res.success) {
             this.success()
           }
-          this.tip = {
+          this.setTip({
             text: res.msg
-          }
+          })
         })
       }
     },
     components: {
-      dialog,
-      tip
+      dialog
     }
   }
 </script>

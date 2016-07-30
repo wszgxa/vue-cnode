@@ -8,14 +8,9 @@
 
 <script>
   export default {
-    props: {
-      tip: {
-        type: Object,
-        default: {
-          text: '',
-          min: 2000,
-          callback: null
-        }
+    vuex: {
+      getters: {
+        tip: ({ docState }) => docState.tip
       }
     },
     data () {
@@ -35,7 +30,7 @@
           if (self.tip.callback) {
             self.tip.callback()
           }
-        }, self.tip.min || 2000)
+        }, self.tip.time)
       }
     }
   }

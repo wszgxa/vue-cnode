@@ -7,19 +7,19 @@
   <section class="list-wrap">
     <list :list-data='listData'></list>
   </section> 
-  <tip :tip="tip"></tip>
 </template>
 <script>
   import list from './child/list'
-  import tip from '../common/tip'
   import { setContent } from '../../vuex/actions/content_actions'
+  import { setTip } from '../../vuex/actions/doc_actions'
   export default {
     vuex: {
       getters: {
         data: ({ content }) => content.data
       },
       actions: {
-        setContent
+        setContent,
+        setTip
       }
     },
     computed: {
@@ -34,15 +34,16 @@
     },
     ready () {
       // 用箭头函数绑定this
-      this.setContent(this.$route.name, (err) => {
-        this.tip = {
-          text: err
+      this.setContent(this.$route.name, (res) => {
+        if (!res.success) {
+          this.setTip({
+            text: res.msg
+          })
         }
       })
     },
     components: {
-      list,
-      tip
+      list
     }
   }
 </script>
