@@ -33,7 +33,6 @@
     ready () {
       // 设置基本信息到userInfo
       this.getStore()
-      this.setDetail()
     }
   }
 </script>

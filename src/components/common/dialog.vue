@@ -27,7 +27,6 @@
     },
     methods: {
       sure () {
-        console.log(this.config.callback)
         if (this.config.callback) this.config.callback()
         this.close()
       },

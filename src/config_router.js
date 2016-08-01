@@ -34,6 +34,11 @@ export function configRouter (router) {
       name: 'detail',
       title: '话题',
       component: (resolve) => require(['./components/detail/detail.vue'], resolve)
+    },
+    'user/:username': {
+      name: 'user',
+      title: '用户',
+      component: (resolve) => require(['./components/user/user_info.vue'], resolve)
     }
   })
 }

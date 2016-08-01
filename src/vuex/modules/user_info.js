@@ -12,7 +12,9 @@ const state = {
   avatarUrl: '',
   score: '',
   recentTopics: '',
-  recentReplies: ''
+  recentReplies: '',
+  github: '',
+  createAt: ''
 }
 
 const mutations = {
@@ -32,6 +34,8 @@ const mutations = {
       state.score = data.score
       state.recentTopics = data.recent_topics
       state.recentReplies = data.recent_replies
+      state.github = data.githubUsername || ''
+      state.createAt = data.create_at
     } catch (err) {
       console.log(err)
     }

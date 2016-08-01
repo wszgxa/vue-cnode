@@ -9,7 +9,7 @@
           <a v-if="avatarUrl === ''" @click="handleUrl('login')">
             <img :src="userImg" alt="头像">
           </a>
-          <a v-else @click="handleUrl('userInfo')">
+          <a v-else @click="user">
             <img :src="avatarUrl" alt="头像">
           </a>
         </div>
@@ -98,8 +98,7 @@
       this.setNavState()
     },
     watch: {
-      routeName: 'setNavState',
-      accessToken: 'getUserInfo'
+      routeName: 'setNavState'
     },
     methods: {
       handleUrl (name) {
@@ -109,7 +108,16 @@
         this.setMenu(false)
       },
       setNavState () {
-        this.navState = 'nav-wrap ' + this.name
+        this.navState = 'nav-wrap ' + this.routeName
+      },
+      user () {
+        this.$route.router.go({
+          name: 'user',
+          params: {
+            username: this.loginName
+          }
+        })
+        this.setMenu(false)
       },
       logout () {
         this.config = {

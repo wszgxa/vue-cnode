@@ -2,7 +2,7 @@
 
 <template>
   <header 
-    v-if="name == 'login'"
+    v-if="headerState"
     class="header s">
     <div class="header-wrap">
       <a @click='goBack' class="icon i-back"></a>
@@ -23,7 +23,7 @@
   export default {
     vuex: {
       getters: {
-        name: ({route}) => route.name
+        routeName: ({route}) => route.name
       },
       actions: {
         setMenu
@@ -34,15 +34,24 @@
         headerState: false
       }
     },
+    watch: {
+      routeName: 'setState'
+    },
     ready () {
-      let stateEnum = {
-        login: true
-      }
-      if (stateEnum[this.$route.name]) {
-        this.headerState = true
-      }
+      this.setState()
     },
     methods: {
+      setState () {
+        let stateEnum = {
+          login: true,
+          user: true
+        }
+        if (stateEnum[this.routeName]) {
+          this.headerState = true
+        } else {
+          this.headerState = false
+        }
+      },
       goBack () {
         window.history.go(-1)
       },
