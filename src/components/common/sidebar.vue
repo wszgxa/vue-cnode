@@ -61,11 +61,13 @@
       </div>
     </nav>
   </div>
+  <dialog :config.sync="config"></dialog>
 </template>
 
 <script>
-  import { setMenu } from '../../vuex/actions/doc_actions'
-  import { setDetail } from '../../vuex/actions/user_actions'
+  import { setMenu, setTip } from '../../vuex/actions/doc_actions'
+  import { setDetail, deleteUserInfo } from '../../vuex/actions/user_actions'
+  import dialog from './dialog'
   export default {
     vuex: {
       getters: {
@@ -77,13 +79,19 @@
       },
       actions: {
         setMenu,
-        setDetail
+        setDetail,
+        deleteUserInfo,
+        setTip
       }
+    },
+    components: {
+      dialog
     },
     data () {
       return {
         navState: 'nav-wrap',
-        userImg: '/static/img/user_avtar_default.png'
+        userImg: '/static/img/user_avtar_default.png',
+        config: {}
       }
     },
     ready () {
@@ -104,6 +112,20 @@
         this.navState = 'nav-wrap ' + this.name
       },
       logout () {
+        this.config = {
+          visible: true,
+          text: '确定要注销吗？',
+          sureText: '确定',
+          cancelText: '取消',
+          callback: () => {
+            let a = this.deleteUserInfo()
+            if (a) {
+              this.setTip({
+                text: '注销成功'
+              })
+            }
+          }
+        }
       }
     }
   }

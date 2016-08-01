@@ -1,7 +1,8 @@
 // content
 import {
   SET_BASEINFO,
-  SET_DETAIL
+  SET_DETAIL,
+  DELETE_USER_INFO
 } from '../mutation_types'
 const state = {
   // 保存第一页数据
@@ -33,6 +34,11 @@ const mutations = {
       state.recentReplies = data.recent_replies
     } catch (err) {
       console.log(err)
+    }
+  },
+  [DELETE_USER_INFO] (state) {
+    for (let key in state) {
+      state[key] = ''
     }
   }
 }

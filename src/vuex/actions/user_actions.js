@@ -63,3 +63,9 @@ export const setDetail = ({dispatch, state}) => {
     console.log(err)
   })
 }
+export const deleteUserInfo = ({dispatch}) => {
+  dispatch(types.DELETE_USER_INFO)
+  localStorage.removeItem('cnodeBaseInfo')
+  localStorage.removeItem('cnodeDetailInfo')
+  return true
+}
