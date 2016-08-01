@@ -6,17 +6,30 @@
     <div class="header">
       <div class="h-item">
         <div class="user-img">
-          <a @click="handleUrl('login')">
+          <a v-if="avatarUrl === ''" @click="handleUrl('login')">
             <img :src="userImg" alt="头像">
+          </a>
+          <a v-else @click="handleUrl('userInfo')">
+            <img :src="avatarUrl" alt="头像">
           </a>
         </div>
       </div>
-      <div class="h-item s">
+      <div v-if="loginName === ''" class="h-item s">
         <div class="login-text">
           请点击头像登陆
         </div>
       </div>
+      <div v-else class="h-item s">
+        <div class="info">
+          <h4>{{loginName}}</h4>
+          <span>积分：{{score}}</span>
+        </div>
+        <div class="logout">
+          <a @click="logout">注销</a>
+        </div>
+      </div>
     </div>
+
     <nav>
       <div :class="navState">
         <a id='index' @click="handleUrl('index')">
@@ -56,9 +69,11 @@
   export default {
     vuex: {
       getters: {
-        name: ({ route }) => route.name,
+        routeName: ({ route }) => route.name,
         menuState: ({ docState }) => docState.menuState,
-        loginName: ({ userInfo }) => userInfo.loginName
+        avatarUrl: ({userInfo}) => userInfo.avatarUrl,
+        loginName: ({ userInfo }) => userInfo.loginName,
+        score: ({userInfo}) => userInfo.score
       },
       actions: {
         setMenu,
@@ -75,7 +90,7 @@
       this.setNavState()
     },
     watch: {
-      name: 'setNavState',
+      routeName: 'setNavState',
       accessToken: 'getUserInfo'
     },
     methods: {
@@ -88,8 +103,7 @@
       setNavState () {
         this.navState = 'nav-wrap ' + this.name
       },
-      getUserInfo () {
-
+      logout () {
       }
     }
   }
