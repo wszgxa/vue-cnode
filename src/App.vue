@@ -16,12 +16,24 @@
   import sidebar from './components/common/sidebar'
   import tip from './components/common/tip'
   import store from './vuex/store'
+  import { setDetail, getStore } from './vuex/actions/user_actions'
   export default {
+    vuex: {
+      actions: {
+        setDetail,
+        getStore
+      }
+    },
     store,
     components: {
       cnHeader,
       sidebar,
       tip
+    },
+    ready () {
+      // 设置基本信息到userInfo
+      this.getStore()
+      this.setDetail()
     }
   }
 </script>

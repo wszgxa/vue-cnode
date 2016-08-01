@@ -52,14 +52,17 @@
 
 <script>
   import { setMenu } from '../../vuex/actions/doc_actions'
+  import { setDetail } from '../../vuex/actions/user_actions'
   export default {
     vuex: {
       getters: {
         name: ({ route }) => route.name,
-        menuState: ({ docState }) => docState.menuState
+        menuState: ({ docState }) => docState.menuState,
+        loginName: ({ userInfo }) => userInfo.loginName
       },
       actions: {
-        setMenu
+        setMenu,
+        setDetail
       }
     },
     data () {
@@ -72,7 +75,8 @@
       this.setNavState()
     },
     watch: {
-      name: 'setNavState'
+      name: 'setNavState',
+      accessToken: 'getUserInfo'
     },
     methods: {
       handleUrl (name) {
@@ -83,6 +87,9 @@
       },
       setNavState () {
         this.navState = 'nav-wrap ' + this.name
+      },
+      getUserInfo () {
+
       }
     }
   }

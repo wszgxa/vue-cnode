@@ -27,11 +27,6 @@
         return this.data[this.$route.name]
       }
     },
-    data () {
-      return {
-        tip: {}
-      }
-    },
     ready () {
       // 用箭头函数绑定this
       this.setContent(this.$route.name, (res) => {

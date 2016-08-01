@@ -21,14 +21,15 @@
 </template>
 <script>
   import dialog from '../common/dialog'
-  import { setBaseInfo } from '../../vuex/actions/user_actions'
+  import { setBaseInfo, setDetail } from '../../vuex/actions/user_actions'
   import { setMenu, setTip } from '../../vuex/actions/doc_actions'
   export default {
     vuex: {
       actions: {
         setBaseInfo,
         setMenu,
-        setTip
+        setTip,
+        setDetail
       }
     },
     data () {
@@ -48,6 +49,7 @@
       success () {
         window.history.go(-1)
         this.setMenu(true)
+        this.setDetail()
       },
       login () {
         if (this.access.length < 6) {
