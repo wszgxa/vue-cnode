@@ -17,6 +17,7 @@
   background-color bg-deep
   .info
     padding-top (30/75)rem
+    font-size (26/75)rem
     display flex
     justify-content space-between
     .score
@@ -26,18 +27,52 @@
   .nav
     margin-top -1px
     width 10rem
-    color color-font-white
+    font-size (28/75)rem
     text-align center
     display flex
     background-color bg-deep + 20
     justify-content space-between
     box-shadow 0 (5/75)rem (10/75)rem color-hover
     a
+      color color-font-white - 20    
       width (10/3)rem
       line-height 1.1rem
       &:active
         background-color bg-deep + 25
     a.ac
+      color color-font-white
       border-bottom (8/75)rem solid color-green + 20
-    
-    
+.swiper
+  width 10rem
+  .item-wrap
+    width 10rem
+.item-wrap
+  .icon
+    width w = 1.2rem
+    height w
+    img
+      border-radius 50%
+      width w
+      height w
+  .item
+    display flex
+    color color-font
+    align-items center
+    padding 0.2rem 0.25rem
+    border-bottom 1px solid color-border
+    &:active
+      background-color color-bg - 10
+  .info-wrap
+    width 7.7rem
+    padding 0 0.3rem   
+    .title
+      width 7.7rem
+      font-size size-title
+      text-overflow ellipsis
+      overflow hidden
+      white-space nowrap
+    .text
+      display flex
+      font-size sp-size
+      color color-font + 30
+      justify-content space-between
