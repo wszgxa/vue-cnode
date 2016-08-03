@@ -8,6 +8,7 @@
     <sidebar></sidebar>
     <router-view></router-view>
     <tip></tip>
+    <loading></loading>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
   import sidebar from './components/common/sidebar'
   import tip from './components/common/tip'
   import store from './vuex/store'
+  import loading from './components/common/loading'
   import { setDetail, getStore } from './vuex/actions/user_actions'
   export default {
     vuex: {
@@ -28,7 +30,8 @@
     components: {
       cnHeader,
       sidebar,
-      tip
+      tip,
+      loading
     },
     ready () {
       // 设置基本信息到userInfo

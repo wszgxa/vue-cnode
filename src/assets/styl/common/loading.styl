@@ -1,0 +1,30 @@
+@import '../partial/variables'
+.loading-wrap
+  position fixed
+  z-index 3
+  top 2rem
+  left 50%
+  height 0.8rem
+  line-height 0.8rem
+  width 0.8rem
+  text-align center
+  border-radius 50%
+  transform translate3d(-50%, 0, 0)
+  box-shadow 1px 1px 10px color-hover
+  .i-loading
+    display inline-block
+    color #F32B2B
+    font-size (38/75)rem
+    animation rotate 1000ms infinite linear
+
+@keyframes rotate
+  from 
+    transform rotate3d(0, 0, 1, 0deg)
+  to 
+    transform rotate3d(0, 0, 1, 360deg)
+
+
+// .rotate-transition
+//   transition all .3s ease
+.rotate-enter, .rotate-leave 
+  transform translate3d(0,-5rem,0)

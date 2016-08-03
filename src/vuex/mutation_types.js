@@ -6,6 +6,7 @@ export const REFRESH_CONTENT = 'REFRESH_CONTENT'
 // doc
 export const SET_DOC_MENU = 'SET_DOC_MENU'
 export const SET_TIP = 'SET_TIP'
+export const SET_LOADING = 'SET_LOADING'
 
 // user info
 export const SET_BASEINFO = 'SET_BASEINFO'
