@@ -41,4 +41,29 @@ export function configRouter (router) {
       component: (resolve) => require(['./components/user/user_info.vue'], resolve)
     }
   })
+
+  /**
+   * fix ios title刷新不了的bug
+   * @iframeLoad
+   * @author zhaoguoxu
+   */
+  const iframeLoad = function (src) {
+    let iframe = document.createElement('iframe')
+    iframe.style.display = 'none'
+    iframe.src = src
+    document.body.appendChild(iframe)
+    iframe.addEventListener('load', function () {
+      setTimeout(function () {
+        iframe.remove()
+      }, 0)
+    })
+  }
+  // document title change
+  router.afterEach((transition) => {
+    document.title = transition.to.title || 'CNode.js'
+    if (navigator.userAgent.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)) {
+      let src = '/static/fixrouter.html?' + Math.random()
+      iframeLoad(src)
+    }
+  })
 }
