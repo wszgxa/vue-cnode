@@ -4,7 +4,7 @@
     <div class="content">
       <h3 class="title">{{ data.title }}</h3>
       <div class="info-wrap">
-        <div class="user_avatar">
+        <div @click="jumpUser(author.loginname)" class="user_avatar">
           <img :src="author.avatar_url" alt="user_icon">
         </div>
         <div class="item-detail">
@@ -24,7 +24,7 @@
     </div>
     <div v-for="(index, item) in data.replies" class="comments">
       <div class="info-wrap s">
-        <div class="user_avatar">
+        <div @click="jumpUser(item.author.loginname)" class="user_avatar">
           <img :src="item.author.avatar_url" alt="user_icon">
         </div>
         <div class="item-detail">
@@ -80,6 +80,14 @@
       })
     },
     methods: {
+      jumpUser (userName) {
+        this.$route.router.go({
+          name: 'user',
+          params: {
+            username: userName
+          }
+        })
+      },
       setTag () {
         let tagEnum = {
           good: {
