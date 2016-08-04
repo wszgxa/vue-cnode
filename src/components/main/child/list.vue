@@ -3,10 +3,10 @@
   <a 
     v-for='item in listData'
     class="item"
-    v-link="{name: 'detail', query:{ id: item.id }}">
+    @click="jumpDetail($event, item.id)">
     <h3>{{ item.title }}</h3>
     <div class="info-wrap">
-      <div class="user_avatar">
+      <div @click="jumpUser($event, item.author.loginname)" class="user_avatar">
         <img :src="item.author.avatar_url" alt="user_icon">
       </div>
       <div class="item-detail">
@@ -26,6 +26,25 @@
   export default {
     props: {
       listData: Array
+    },
+    methods: {
+      jumpDetail (e, id) {
+        this.$route.router.go({
+          name: 'detail',
+          query: {
+            id: id
+          }
+        })
+      },
+      jumpUser (e, userName) {
+        e.stopPropagation()
+        this.$route.router.go({
+          name: 'user',
+          params: {
+            username: userName
+          }
+        })
+      }
     }
   }
 </script>
