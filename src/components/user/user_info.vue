@@ -2,13 +2,23 @@
 <template>
   <section class="user-wrap">
     <div class="header">
-      <div class="avatar">
-        <img :src="userData.avatar_url" alt="头像">
+      <div v-if="userData.avatar_url" class="avatar-wrap">
+        <div class="avatar">
+          <img :src="userData.avatar_url" alt="头像">
+        </div>
         <span>{{ userData.loginname }}</span>
       </div>
+      <div v-else class="avatar-wrap">
+        <div class="avatar">
+          <img src="../../assets/img/avatar.gif" alt="头像">
+        </div>
+      </div>
       <div class="info">
-        <div>
+        <div v-if="userData.create_at">
           注册时间：{{ userData.create_at | fullDate }}
+        </div>
+        <div v-else>
+          注册时间：
         </div>
         <div class="score">
           积分：{{ userData.score }}

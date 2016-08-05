@@ -1,10 +1,12 @@
 <style lang='styl' src='../../assets/styl/detail.styl' scoped></style>
 <template>
   <section class="detail">
-    <div class="content">
+    <div v-if="author.loginname" class="content">
       <h3 class="title">{{ data.title }}</h3>
-      <div class="info-wrap">
-        <div @click="jumpUser(author.loginname)" class="user_avatar">
+      <div v-if="author.loginname" class="info-wrap">
+        <div
+          @click="jumpUser(author.loginname)"
+          class="user_avatar">
           <img :src="author.avatar_url" alt="user_icon">
         </div>
         <div class="item-detail">
