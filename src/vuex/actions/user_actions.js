@@ -52,7 +52,7 @@ export const setDetail = ({dispatch, state}) => {
   if (state.userInfo.loginName === '') return false
   Vue.http({
     url: `/api/v1/user/${state.userInfo.loginName}`,
-    method: 'get'
+    method: 'GET'
   }).then((res) => {
     let data = JSON.parse(res.data)
     if (data.success) {

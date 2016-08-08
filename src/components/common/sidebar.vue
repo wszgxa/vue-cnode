@@ -53,10 +53,10 @@
           <span>招聘</span>
         </a>
       </div>
-      <div class="nav-wrap">
+      <div :class="navState">
         <a id='msg' @click="handleUrl('msg')">
           <i class="icon i-msg"></i>
-          <span>消息</span>
+          <span>消息 <b class="un-read" v-if="unRead !=0 ">{{unRead}}</b></span>
         </a>
         <a id="about">
           <i class="icon i-about"></i>
@@ -75,6 +75,7 @@
   export default {
     vuex: {
       getters: {
+        accessToken: ({ userInfo }) => userInfo.accessToken,
         routeName: ({ route }) => route.name,
         menuState: ({ docState }) => docState.menuState,
         avatarUrl: ({userInfo}) => userInfo.avatarUrl,
@@ -95,16 +96,34 @@
       return {
         navState: 'nav-wrap',
         userImg: '/static/img/user_avtar_default.png',
-        config: {}
+        config: {},
+        unRead: 0
       }
     },
     ready () {
       this.setNavState()
+      this.$nextTick(() => {
+        this.getUnReadMsg()
+      })
     },
     watch: {
       routeName: 'setNavState'
     },
     methods: {
+      getUnReadMsg () {
+        this.$http({
+          url: '/api/v1/message/count',
+          method: 'GET',
+          params: {
+            accesstoken: this.accessToken
+          }
+        }).then((res) => {
+          let data = JSON.parse(res.data)
+          this.unRead = data.data
+        }).catch((err) => {
+          console.log(err)
+        })
+      },
       handleUrl (name) {
         this.$route.router.go({
           name: name

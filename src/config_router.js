@@ -50,7 +50,7 @@ export function configRouter (router) {
   /**
    * fix ios title刷新不了的bug
    * @iframeLoad
-   * @author zhaoguoxu
+   * @author hiluluke
    */
   const iframeLoad = function (src) {
     let iframe = document.createElement('iframe')
