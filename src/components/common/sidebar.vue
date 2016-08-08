@@ -131,6 +131,7 @@
               this.setTip({
                 text: '注销成功'
               })
+              this.setMenu(false)
             }
           }
         }

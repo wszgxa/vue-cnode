@@ -8,7 +8,9 @@ import store from './vuex/store'
 // 全局错误处理，全局loading
 import { setLoading, setTip } from './vuex/actions/doc_actions'
 export default function (request, next) {
-  setLoading(store, true)
+  if (request.tip !== false) {
+    setLoading(store, true)
+  }
   next((res) => {
     setLoading(store, false)
     let data = JSON.parse(res.data)

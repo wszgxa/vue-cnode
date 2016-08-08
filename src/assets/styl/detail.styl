@@ -1,7 +1,7 @@
 @import 'partial/variables'
 ig-w = 1.2rem
 
-.detail
+.detail-content
   margin-top mg-top
   .content
     @extend $block
@@ -44,15 +44,23 @@ ig-w = 1.2rem
     .g
       display flex
       align-items center
-      padding-right (20/75)rem
       text-align right
       i
+        display block
+        width 1rem
+        height 1rem
+        line-height 1rem
+        text-align center
         font-size (40/75)rem
-        display inline-block
+        border-radius 50%
+        color color-green
+        &:active
+          background-color color-bg - 15
       .ii
         color #878787
         font-size (30/75)rem
-        padding 0 10px
+      .ii.ac
+        color color-green
   .comments
     @extend $block
   
