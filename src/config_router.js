@@ -35,10 +35,15 @@ export function configRouter (router) {
       title: '话题',
       component: (resolve) => require(['./components/detail/detail.vue'], resolve)
     },
-    'user/:username': {
+    '/user/:username': {
       name: 'user',
       title: '用户',
       component: (resolve) => require(['./components/user/user_info.vue'], resolve)
+    },
+    '/message': {
+      name: 'msg',
+      title: '消息',
+      component: (resolve) => require(['./components/msg/msg.vue'], resolve)
     }
   })
 

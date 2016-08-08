@@ -54,6 +54,10 @@
         </a>
       </div>
       <div class="nav-wrap">
+        <a id='msg' @click="handleUrl('msg')">
+          <i class="icon i-msg"></i>
+          <span>消息</span>
+        </a>
         <a id="about">
           <i class="icon i-about"></i>
           <span>关于</span>
