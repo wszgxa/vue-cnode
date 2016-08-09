@@ -47,6 +47,9 @@ export function configRouter (router) {
     }
   })
 
+  router.redirect({
+    '/message': '/message/1'
+  })
   /**
    * fix ios title刷新不了的bug
    * @iframeLoad

@@ -56,6 +56,14 @@
           this.list.$set(index, data)
         }
       },
+      jumpUser (userName) {
+        this.$route.router.go({
+          name: 'user',
+          params: {
+            username: userName
+          }
+        })
+      },
       ups (index, id) {
         this.$http({
           url: `/api/v1/reply/${id}/ups`,
