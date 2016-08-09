@@ -40,7 +40,7 @@ export function configRouter (router) {
       title: '用户',
       component: (resolve) => require(['./components/user/user_info.vue'], resolve)
     },
-    '/message': {
+    '/message/:page': {
       name: 'msg',
       title: '消息',
       component: (resolve) => require(['./components/msg/msg.vue'], resolve)
