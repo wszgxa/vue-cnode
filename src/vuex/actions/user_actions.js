@@ -9,7 +9,7 @@ let storeDetailInfo = (data) => {
   localStorage.setItem('cnodeDetailInfo', JSON.stringify(data))
 }
 // 获取存储在localStorage中的数据
-export const getStore = ({dispatch, state}) => {
+export const getStore = ({ dispatch, state }) => {
   if (localStorage.getItem('cnodeBaseInfo')) {
     let data = JSON.parse(localStorage.getItem('cnodeBaseInfo'))
     dispatch(types.SET_BASEINFO, data)
@@ -48,7 +48,7 @@ export const setBaseInfo = ({ dispatch, state }, token, callback) => {
     callback(setMsg(false, errBody.error_msg))
   })
 }
-export const setDetail = ({dispatch, state}) => {
+export const setDetail = ({ dispatch, state }) => {
   if (state.userInfo.loginName === '') return false
   Vue.http({
     url: `/api/v1/user/${state.userInfo.loginName}`,
@@ -63,9 +63,30 @@ export const setDetail = ({dispatch, state}) => {
     console.log(err)
   })
 }
-export const deleteUserInfo = ({dispatch}) => {
+export const deleteUserInfo = ({ dispatch }) => {
   dispatch(types.DELETE_USER_INFO)
   localStorage.removeItem('cnodeBaseInfo')
   localStorage.removeItem('cnodeDetailInfo')
   return true
+}
+
+export const setMsgs = ({ dispatch, state }, callback) => {
+  Vue.http({
+    method: 'GET',
+    url: '/api/v1/messages',
+    params: {
+      accesstoken: state.userInfo.accessToken
+    }
+  }).then(res => {
+    let data = JSON.parse(res.data)
+    let d = data.data
+    if (!data.success) {
+      callback(setMsg(false, '请求出错'))
+    } else {
+      let listData = d.hasnot_read_messages.concat(d.has_read_messages)
+      dispatch(types.SET_MSGS, listData)
+    }
+  }).catch(err => {
+    console.log(err)
+  })
 }

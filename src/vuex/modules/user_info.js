@@ -2,7 +2,8 @@
 import {
   SET_BASEINFO,
   SET_DETAIL,
-  DELETE_USER_INFO
+  DELETE_USER_INFO,
+  SET_MSGS
 } from '../mutation_types'
 const state = {
   // 保存第一页数据
@@ -14,7 +15,8 @@ const state = {
   recentTopics: '',
   recentReplies: '',
   github: '',
-  createAt: ''
+  createAt: '',
+  msgs: []
 }
 
 const mutations = {
@@ -44,6 +46,9 @@ const mutations = {
     for (let key in state) {
       state[key] = ''
     }
+  },
+  [SET_MSGS] (state, list) {
+    state.msgs = list
   }
 }
 
