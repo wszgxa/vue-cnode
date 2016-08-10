@@ -4,7 +4,7 @@
     <div class="header">
       <div v-if="userData.avatar_url" class="avatar-wrap">
         <div class="avatar">
-          <img :src="userData.avatar_url" alt="头像">
+          <img v-lazy="userData.avatar_url" alt="头像">
         </div>
         <span>{{ userData.loginname }}</span>
       </div>

@@ -2,7 +2,7 @@
   <div v-for="(index, item) in list" class="comments">
     <div class="info-wrap s">
       <div @click="jumpUser(item.author.loginname)" class="user_avatar">
-        <img :src="item.author.avatar_url" alt="user_icon">
+        <img v-lazy="item.author.avatar_url" alt="user_icon">
       </div>
       <div class="item-detail">
         <div class="z">

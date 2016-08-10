@@ -7,7 +7,7 @@
     <h3>{{ item.title }}</h3>
     <div class="info-wrap">
       <div @click="jumpUser($event, item.author.loginname)" class="user_avatar">
-        <img :src="item.author.avatar_url" alt="user_icon">
+        <img v-lazy="item.author.avatar_url" alt="user_icon">
       </div>
       <div class="item-detail">
         <div class="i">

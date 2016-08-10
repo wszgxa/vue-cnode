@@ -8,10 +8,15 @@ import { sync } from 'vuex-router-sync'
 import { configRouter } from './config_router'
 import resourceGlobalSet from './resource_set'
 import vueTimeAgo from 'vue-timeago'
+import lazyload from 'vue-lazyload'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
 Vue.use(filter)
+Vue.use(lazyload, {
+  error: '/static/img/avatar.gif',
+  loading: '/static/img/avatar.gif'
+})
 Vue.use(vueTimeAgo, {
   name: 'timeago',
   locale: 'zh-CN',
