@@ -1,20 +1,21 @@
 import * as types from '../mutation_types'
 import { setMsg } from '../../tool'
 import Vue from 'vue'
-export const setContent = ({ dispatch, state }, tag, callback) => {
-  if (state.content[tag]) return false
+export const setContent = ({ dispatch, state }, tag, pageNum, callback) => {
+  if (state.content.data[tag][pageNum]) return false
   Vue.http({
     url: '/api/v1/topics',
     method: 'GET',
     params: {
-      page: 0,
+      page: pageNum,
       limit: 20,
       tab: tag === 'index' ? '' : tag
     }
   }).then(res => {
     let data = JSON.parse(res.data)
     if (data.success) {
-      dispatch(types.SET_CONTENT, tag, data.data)
+      dispatch(types.SET_CONTENT, tag, data.data, pageNum)
+      callback(setMsg(true, '成功'))
     } else {
       callback(setMsg(false, data.error_msg))
     }

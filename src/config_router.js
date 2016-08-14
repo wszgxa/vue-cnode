@@ -1,26 +1,26 @@
 export function configRouter (router) {
   router.map({
-    '/': {
+    '/:page': {
       name: 'index',
       title: '全部',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
     },
-    '/good': {
+    '/good/:page': {
       name: 'good',
       title: '精华',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
     },
-    '/share': {
+    '/share/:page': {
       name: 'share',
       title: '分享',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
     },
-    '/ask': {
+    '/ask/:page': {
       name: 'ask',
       title: '问答',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
     },
-    '/job': {
+    '/job/:page': {
       name: 'job',
       title: '招聘',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
@@ -48,7 +48,8 @@ export function configRouter (router) {
   })
 
   router.redirect({
-    '/message': '/message/1'
+    '/message': '/message/1',
+    '/': '/1'
   })
   /**
    * fix ios title刷新不了的bug

@@ -6,7 +6,8 @@ import {
 const state = {
   // 保存第一页数据
   data: {
-    index: [],
+    index: {
+    },
     good: [],
     share: [],
     ask: [],
@@ -15,8 +16,8 @@ const state = {
 }
 
 const mutations = {
-  [SET_CONTENT] (state, tag, data) {
-    state.data[tag] = data
+  [SET_CONTENT] (state, tag, data, pageNum) {
+    state.data[tag][pageNum] = data
   },
   [ADD_CONTENT] (state, tag, data) {
     state[tag] = state[tag].concat(data)
