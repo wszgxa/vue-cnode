@@ -19,6 +19,7 @@
   import store from './vuex/store'
   import loading from './components/common/loading'
   import { setDetail, getStore } from './vuex/actions/user_actions'
+  import fastclick from 'fastclick'
   export default {
     vuex: {
       actions: {
@@ -35,6 +36,7 @@
     },
     ready () {
       // 设置基本信息到userInfo
+      fastclick.attach(document.body)
       this.getStore()
     }
   }

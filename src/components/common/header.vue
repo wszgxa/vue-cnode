@@ -50,7 +50,9 @@
       setState () {
         let stateEnum = {
           login: true,
-          user: true
+          user: true,
+          msg: true,
+          detail: true
         }
         if (stateEnum[this.routeName]) {
           this.headerState = true

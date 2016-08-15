@@ -125,6 +125,13 @@
         })
       },
       handleUrl (name) {
+        if (name === 'msg') {
+          this.$route.router.go({
+            name: name
+          })
+          this.setMenu(false)
+          return
+        }
         this.$route.router.go({
           path: `/${name}`
         })
