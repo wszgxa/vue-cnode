@@ -1,6 +1,6 @@
 export function configRouter (router) {
   router.map({
-    '/:page': {
+    '/index/:page': {
       name: 'index',
       title: '全部',
       component: (resolve) => require(['./components/main/index.vue'], resolve)
@@ -48,8 +48,12 @@ export function configRouter (router) {
   })
 
   router.redirect({
+    '/': '/index/1',
     '/message': '/message/1',
-    '/': '/1'
+    '/good': '/good/1',
+    '/share': '/share/1',
+    '/ask': '/ask/1',
+    '/job': '/job/1'
   })
   /**
    * fix ios title刷新不了的bug

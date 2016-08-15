@@ -32,7 +32,7 @@
 
     <nav>
       <div :class="navState">
-        <a id='index' @click="handleUrl('index')">
+        <a id='index' @click="handleUrl('')">
           <i class="icon i-all"></i>
           <span>全部</span>
         </a>
@@ -126,7 +126,7 @@
       },
       handleUrl (name) {
         this.$route.router.go({
-          name: name
+          path: `/${name}`
         })
         this.setMenu(false)
       },

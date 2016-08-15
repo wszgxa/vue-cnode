@@ -3,7 +3,8 @@
 <template>
   <header 
     v-if="headerState"
-    class="header s">
+    class="header s"
+    >
     <div class="header-wrap">
       <a @click='goBack' class="icon i-back"></a>
       <h3>{{ $route.title }}</h3>
@@ -16,10 +17,12 @@
       <a @click='openMenu' class="icon i-menu"></a>
       <h3>{{ $route.title }}</h3>
     </div>
+    <page></page>
   </header>
 </template>
 <script>
   import { setMenu } from '../../vuex/actions/doc_actions'
+  import page from './page'
   export default {
     vuex: {
       getters: {
@@ -28,6 +31,9 @@
       actions: {
         setMenu
       }
+    },
+    components: {
+      page
     },
     data () {
       return {

@@ -1,11 +1,10 @@
 <style lang="styl" scoped>
   .list-wrap
     width 10rem
-    margin-top (100/75)rem
+    margin-top (170/75)rem
 </style>
 <template>
   <section class="list-wrap">
-    <!--<page></page>-->
     <list :list-data='listData'></list>
   </section>
 </template>
@@ -13,11 +12,11 @@
   import list from './child/list'
   import { setContent } from '../../vuex/actions/content_actions'
   import { setTip } from '../../vuex/actions/doc_actions'
-  import { page } from './child/page'
   export default {
     vuex: {
       getters: {
-        data: ({ content }) => content.data
+        data: ({ content }) => content.data,
+        page: ({ route }) => route.params.page
       },
       actions: {
         setContent,
@@ -30,25 +29,30 @@
       }
     },
     ready () {
-      // 用箭头函数绑定this
-      this.setContent(this.$route.name, 0, (res) => {
-        if (!res.success) {
-          this.setTip({
-            text: res.msg
-          })
-        } else {
-          this.setListData()
-        }
-      })
+      this.getData()
+    },
+    watch: {
+      'page': 'getData'
     },
     methods: {
+      getData () {
+        // 用箭头函数绑定this
+        this.setContent(this.$route.name, this.page, (res) => {
+          if (!res.success) {
+            this.setTip({
+              text: res.msg
+            })
+          } else {
+            this.setListData()
+          }
+        })
+      },
       setListData () {
-        this.listData = this.data[this.$route.name][0]
+        this.listData = this.data[this.$route.name][this.page]
       }
     },
     components: {
-      list,
-      page
+      list
     }
   }
 </script>
