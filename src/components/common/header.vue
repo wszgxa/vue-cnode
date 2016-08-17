@@ -16,6 +16,7 @@
     <div class="header-wrap">
       <a @click='openMenu' class="icon i-menu"></a>
       <h3>{{ $route.title }}</h3>
+      <a @click='edit' class="icon i-pub"></a>
     </div>
     <page></page>
   </header>
@@ -52,7 +53,8 @@
           login: true,
           user: true,
           msg: true,
-          detail: true
+          detail: true,
+          edit: true
         }
         if (stateEnum[this.routeName]) {
           this.headerState = true
@@ -65,6 +67,11 @@
       },
       openMenu () {
         this.setMenu(true)
+      },
+      edit () {
+        this.$route.router.go({
+          name: 'edit'
+        })
       }
     }
   }
