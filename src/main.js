@@ -12,6 +12,7 @@ import lazyload from 'vue-lazyload'
 
 Vue.use(VueResource)
 Vue.use(VueRouter)
+
 Vue.use(filter)
 Vue.use(lazyload, {
   error: '/static/img/avatar.gif',

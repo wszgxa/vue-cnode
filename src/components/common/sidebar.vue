@@ -103,7 +103,9 @@
     ready () {
       this.setNavState()
       this.$nextTick(() => {
-        this.getUnReadMsg()
+        if (this.accessToken) {
+          this.getUnReadMsg()
+        }
       })
     },
     watch: {

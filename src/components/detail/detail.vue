@@ -26,12 +26,15 @@
         <text :text="data.content"></text>
     </div>
     <list :ac="ac" :list.sync="data.replies"></list>
+    <comment></comment>
   </section>
 </template>
 <script>
   import list from './child/replies_list'
   import text from '../common/text'
+  import comment from './child/comment'
   import { setTip } from '../../vuex/actions/doc_actions'
+  
   export default {
     vuex: {
       getters: {
@@ -44,7 +47,8 @@
     },
     components: {
       text,
-      list
+      list,
+      comment
     },
     data () {
       return {
