@@ -15,8 +15,7 @@
   export default {
     vuex: {
       getters: {
-        data: ({ content }) => content.data,
-        page: ({ route }) => route.params.page
+        data: ({ content }) => content.data
       },
       actions: {
         setContent,
@@ -32,12 +31,12 @@
       this.getData()
     },
     watch: {
-      'page': 'getData'
+      '$route.params.page': 'getData'
     },
     methods: {
       getData () {
         // 用箭头函数绑定this
-        this.setContent(this.$route.name, this.page, (res) => {
+        this.setContent(this.$route.name, this.$route.params.page, (res) => {
           if (!res.success) {
             this.setTip({
               text: res.msg
@@ -48,7 +47,7 @@
         })
       },
       setListData () {
-        this.listData = this.data[this.$route.name][this.page]
+        this.listData = this.data[this.$route.name][this.$route.params.page]
       }
     },
     components: {
